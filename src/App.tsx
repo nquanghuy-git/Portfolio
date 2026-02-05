@@ -1,9 +1,27 @@
 /** @format */
 
+import { useLanguage } from './LanguageContext';
+import LanguageSelector from './LanguageSelector';
+
 function App() {
+  const { language, setLanguage, t } = useLanguage();
+
   return (
     // <!-- WRAPPER ALL -->
     <div className="arlo_tm_wrapper_all">
+      {/* Language Selector - Top Right Corner */}
+      <div
+        style={{
+          position: 'fixed',
+          top: '20px',
+          right: '20px',
+          zIndex: 9999,
+          width: '200px',
+        }}
+      >
+        <LanguageSelector />
+      </div>
+
       <div id="arlo_tm_popup_blog">
         <div className="container">
           <div className="inner_popup scrollable"></div>
@@ -41,22 +59,22 @@ function App() {
           <div className="mob_menu">
             <ul className="anchor_nav">
               <li>
-                <a href="#home">Home</a>
+                <a href="#home">{t('menu.home')}</a>
               </li>
               <li>
-                <a href="#about">About</a>
+                <a href="#about">{t('menu.about')}</a>
               </li>
               <li>
-                <a href="#services">Services</a>
+                <a href="#services">{t('menu.services')}</a>
               </li>
               <li>
-                <a href="#portfolio">Portfolio</a>
+                <a href="#portfolio">{t('menu.portfolio')}</a>
               </li>
               <li>
-                <a href="#news">News</a>
+                <a href="#news">{t('menu.news')}</a>
               </li>
               <li>
-                <a href="#contact">Contact</a>
+                <a href="#contact">{t('menu.contact')}</a>
               </li>
             </ul>
           </div>
@@ -77,22 +95,22 @@ function App() {
             <div className="menu_list_wrap">
               <ul className="anchor_nav">
                 <li>
-                  <a href="#home">Home</a>
+                  <a href="#home">{t('menu.home')}</a>
                 </li>
                 <li>
-                  <a href="#about">About</a>
+                  <a href="#about">{t('menu.about')}</a>
                 </li>
                 <li>
-                  <a href="#services">Services</a>
+                  <a href="#services">{t('menu.services')}</a>
                 </li>
                 <li>
-                  <a href="#portfolio">Portfolio</a>
+                  <a href="#portfolio">{t('menu.portfolio')}</a>
                 </li>
                 <li>
-                  <a href="#news">News</a>
+                  <a href="#news">{t('menu.news')}</a>
                 </li>
                 <li>
-                  <a href="#contact">Contact</a>
+                  <a href="#contact">{t('menu.contact')}</a>
                 </li>
               </ul>
             </div>
@@ -154,12 +172,12 @@ function App() {
                       </div>
                       <div className="name_holder">
                         <h3>
-                          Alan <span>Michaelis</span>
+                          Nguyễn <span>Quang Huy</span>
                         </h3>
                       </div>
                       <div className="text_typing">
                         <p>
-                          I'm a{" "}
+                          {t('hero.greeting')}{" "}
                           <span className="arlo_tm_animation_text_word"></span>
                         </p>
                       </div>
@@ -179,8 +197,8 @@ function App() {
               <div className="arlo_tm_about_wrapper_all">
                 <div className="container">
                   <div className="arlo_tm_title_holder">
-                    <h3>About Me</h3>
-                    <span>Main informations about me</span>
+                    <h3>{t('about.title')}</h3>
+                    <span>{t('about.subtitle')}</span>
                   </div>
                   <div className="arlo_tm_about_wrap">
                     <div className="author_wrap">
@@ -205,80 +223,71 @@ function App() {
                       <div className="rightbox">
                         <div className="arlo_tm_mini_title_holder">
                           <h4>
-                            I'm Alan Michaelis and{" "}
+                            {t('about.intro')}{" "}
                             <span className="arlo_tm_animation_text_word"></span>
                           </h4>
                         </div>
                         <div className="definition">
                           <p>
-                            Hi! My name is <strong>Alan Michaelis</strong>. I am
-                            a Web Developer, and I'm very passionate and
-                            dedicated to my work. With 20 years experience as a
-                            professional Web developer, I have acquired the
-                            skills and knowledge necessary to make your project
-                            a success. I enjoy every step of the design process,
-                            from discussion and collaboration to concept and
-                            execution, but I find the most satisfaction in
-                            seeing the finished product do everything for you
-                            that it was created to do.
+                            Hi! My name is <strong>Nguyễn Quang Huy</strong>. {t('about.description')}
                           </p>
                         </div>
                         <div className="about_short_contact_wrap">
                           <ul>
                             <li>
                               <span>
-                                <label>Birthday:</label> 01.07.1990
+                                <label>{t('about.labels.birthday')}:</label> {t('about.birthday')}
                               </span>
                             </li>
                             <li>
                               <span>
-                                <label>Age:</label> 28
+                                <label>{t('about.labels.age')}:</label> {t('about.age')}
                               </span>
                             </li>
                             <li>
                               <span>
-                                <label>City:</label> New York, USA
+                                <label>{t('about.labels.city')}:</label> {t('about.city')}
                               </span>
                             </li>
                             <li>
                               <span>
-                                <label>Interests:</label> Soccer, UFC
+                                <label>{t('about.labels.interests')}:</label> {t('about.interests')}
                               </span>
                             </li>
                             <li>
                               <span>
-                                <label>Study:</label> Chicago University
+                                <label>{t('about.labels.study')}:</label> {t('about.study')}
                               </span>
                             </li>
                             <li>
                               <span>
-                                <label>Degree:</label> Master
+                                <label>{t('about.labels.degree')}:</label> {t('about.degree')}
                               </span>
                             </li>
                             <li>
                               <span>
-                                <label>Website:</label>{" "}
-                                <a href="#">www.mywebsite.com</a>
+                                <label>{t('about.labels.website')}:</label>{" "}
+                                <a href="#">{t('about.website')}</a>
                               </span>
                             </li>
                             <li>
                               <span>
-                                <label>Mail:</label>{" "}
+                                <label>{t('about.labels.mail')}:</label>{" "}
                                 <a href="mailto:example@gmail.com">
-                                  mymail&#64;gmail.com
+                                  {t('about.mail')}
                                 </a>
                               </span>
                             </li>
                             <li>
                               <span>
-                                <label>Phone:</label>{" "}
-                                <a href="#">+77 022 177 05 05</a>
+                                <label>{t('about.labels.phone')}:</label>{" "}
+                                <a href="#">{t('about.phone')}</a>
                               </span>
                             </li>
                             <li>
                               <span>
-                                <label>Twitter:</label>{" "}
-                                <a href="#">&#64;myusername</a>
+                                <label>{t('about.labels.twitter')}:</label>{" "}
+                                <a href="#">{t('about.twitter')}</a>
                               </span>
                             </li>
                           </ul>
@@ -287,12 +296,12 @@ function App() {
                           <ul>
                             <li>
                               <a href="index.html">
-                                <span>Download CV</span>
+                                <span>{t('about.downloadCV')}</span>
                               </a>
                             </li>
                             <li className="anchor">
                               <a href="#contact">
-                                <span>Send Message</span>
+                                <span>{t('about.sendMessage')}</span>
                               </a>
                             </li>
                           </ul>
@@ -312,15 +321,10 @@ function App() {
                   <div className="inner_wrap">
                     <div className="leftbox">
                       <div className="arlo_tm_mini_title_holder">
-                        <h4>Some About my Abilities</h4>
+                        <h4>{t('skills.title')}</h4>
                       </div>
                       <p>
-                        Lorem Ipsum is simply dummy text of the printing and
-                        typesetting industry. Lorem Ipsum has been the
-                        industry's standard dummy text ever since. Lorem Ipsum
-                        has been the industry. Lorem Ipsum has been the
-                        industry's standard dummy text since. Lorem Ipsum is
-                        simply.
+                        {t('skills.description')}
                       </p>
                     </div>
                     <div className="rightbox">
@@ -425,8 +429,8 @@ function App() {
               <div className="arlo_tm_services_wrap">
                 <div className="container">
                   <div className="arlo_tm_title_holder">
-                    <h3>Amazing Services</h3>
-                    <span>Meet our amazing services</span>
+                    <h3>{t('services.title')}</h3>
+                    <span>{t('services.subtitle')}</span>
                   </div>
                   <div className="list_wrap">
                     <ul>
@@ -571,29 +575,29 @@ function App() {
                   <div className="container">
                     <div className="arlo_tm_portfolio_wrap">
                       <div className="arlo_tm_title_holder portfolio">
-                        <h3>Creative Works</h3>
-                        <span>Check out our latest creative works</span>
+                        <h3>{t('portfolio.title')}</h3>
+                        <span>{t('portfolio.subtitle')}</span>
                       </div>
                       <div className="arlo_tm_portfolio_titles"></div>
                       <ul className="arlo_tm_portfolio_filter">
                         <li>
                           <a href="#" className="current" data-filter="*">
-                            All
+                            {t('portfolio.all')}
                           </a>
                         </li>
                         <li>
                           <a href="#" data-filter=".design">
-                            Design
+                            {t('portfolio.design')}
                           </a>
                         </li>
                         <li>
                           <a href="#" data-filter=".photography">
-                            Photography
+                            {t('portfolio.photography')}
                           </a>
                         </li>
                         <li>
                           <a href="#" data-filter=".development">
-                            Development
+                            {t('portfolio.development')}
                           </a>
                         </li>
                       </ul>
@@ -879,8 +883,8 @@ function App() {
               <div className="arlo_tm_news_wrap">
                 <div className="container">
                   <div className="arlo_tm_title_holder news">
-                    <h3>Latest News</h3>
-                    <span>Check out our latest News</span>
+                    <h3>{t('news.title')}</h3>
+                    <span>{t('news.subtitle')}</span>
                   </div>
                   <div className="arlo_tm_list_wrap blog_list">
                     <ul className="total">
@@ -1226,8 +1230,8 @@ function App() {
             <div className="arlo_tm_section" id="contact">
               <div className="container">
                 <div className="arlo_tm_title_holder contact">
-                  <h3>Contact Me</h3>
-                  <span>Get in touch with me</span>
+                  <h3>{t('contact.title')}</h3>
+                  <span>{t('contact.subtitle')}</span>
                 </div>
               </div>
               <div className="arlo_tm_footer_contact_wrapper_all">
@@ -1235,38 +1239,38 @@ function App() {
                   <div className="container">
                     <div className="leftbox">
                       <div className="arlo_tm_mini_title_holder contact">
-                        <h4>Get in Touch</h4>
+                        <h4>{t('contact.getInTouch')}</h4>
                       </div>
                       <div className="short_info_wrap">
                         <ul>
                           <li>
                             <p>
-                              <label>Address:</label>
-                              <span>123 Qwerty Avenue NYC, USA</span>
+                              <label>{t('contact.labels.address')}:</label>
+                              <span>{t('contact.address')}</span>
                             </p>
                           </li>
                           <li>
                             <p>
-                              <label>Email:</label>
+                              <label>{t('contact.labels.email')}:</label>
                               <span>
                                 <a href="mailto:example@gmail.com">
-                                  example@gmail.com
+                                  {t('contact.email')}
                                 </a>
                               </span>
                             </p>
                           </li>
                           <li>
                             <p>
-                              <label>Phone:</label>
-                              <span>+77 022 177 05 05</span>
+                              <label>{t('contact.labels.phone')}:</label>
+                              <span>{t('contact.phone')}</span>
                             </p>
                           </li>
                           <li>
                             <p>
-                              <label>Website:</label>
+                              <label>{t('contact.labels.website')}:</label>
                               <span>
                                 <a href="mailto:example@gmail.com">
-                                  www.yourdomain.com
+                                  {t('contact.website')}
                                 </a>
                               </span>
                             </p>
@@ -1285,34 +1289,34 @@ function App() {
                           >
                             <div
                               className="returnmessage"
-                              data-success="Your message has been received, We will contact you soon."
+                              data-success={t('contact.successMessage')}
                             ></div>
                             <div className="empty_notice">
-                              <span>Please Fill Required Fields</span>
+                              <span>{t('contact.fillRequired')}</span>
                             </div>
                             <div className="wrap">
                               <input
                                 id="name"
                                 type="text"
-                                placeholder="Your Name"
+                                placeholder={t('contact.yourName')}
                               />
                             </div>
                             <div className="wrap">
                               <input
                                 id="email"
                                 type="text"
-                                placeholder="Your Email"
+                                placeholder={t('contact.yourEmail')}
                               />
                             </div>
                             <div className="wrap">
                               <textarea
                                 id="message"
-                                placeholder="Your Message"
+                                placeholder={t('contact.yourMessage')}
                               ></textarea>
                             </div>
                             <div className="arlo_tm_button">
                               <a id="send_message" href="#">
-                                <span>Send Message</span>
+                                <span>{t('contact.sendMessage')}</span>
                               </a>
                             </div>
                           </form>
@@ -1323,7 +1327,7 @@ function App() {
                 </div>
                 <div className="arlo_tm_footer_wrap">
                   <div className="container">
-                    <p>&copy; Copyright 2019. All Rights are Reserved.</p>
+                    <p>{t('contact.copyright')}</p>
                   </div>
                 </div>
               </div>
