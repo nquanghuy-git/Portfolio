@@ -172,7 +172,7 @@ function App() {
                       </div>
                       <div className="name_holder">
                         <h3>
-                          Nguyễn <span>Quang Huy</span>
+                          {t('about.fullName').split(' ')[0]} <span>{t('about.fullName').split(' ').slice(1).join(' ')}</span>
                         </h3>
                       </div>
                       <div className="text_typing">
@@ -229,7 +229,7 @@ function App() {
                         </div>
                         <div className="definition">
                           <p>
-                            Hi! My name is <strong>Nguyễn Quang Huy</strong>. {t('about.description')}
+                            Hi! My name is <strong>{t('about.fullName')}</strong>. {t('about.description')}
                           </p>
                         </div>
                         <div className="about_short_contact_wrap">

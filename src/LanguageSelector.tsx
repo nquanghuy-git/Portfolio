@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
 import { useLanguage } from './LanguageContext';
+import usFlag from '../public/img/logo/usuk.png';
+import vnFlag from '../public/img/logo/vn.png';
 
 const LanguageSelector: React.FC = () => {
   const { language, setLanguage } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
 
   const languages = [
-    { code: 'en' as const,flag: '🇺🇸' },
-    { code: 'vi' as const,flag: '🇻🇳' },
+    { code: 'en' as const, img: usFlag },
+    { code: 'vi' as const, img: vnFlag },
   ];
 
   const currentLang = languages.find(lang => lang.code === language);
@@ -18,106 +20,97 @@ const LanguageSelector: React.FC = () => {
   };
 
   return (
-    <div 
-      style={{
-        position: 'relative',
-        display: 'inline-block',
-        width: '100%'
-      }}
-    >
+    <div style={{ position: 'fixed', top: '20px', right: '20px', zIndex: 9999 }}>
       <button
         onClick={() => setIsOpen(!isOpen)}
         style={{
-          width: '100px',
-          padding: '10px 15px',
-          backgroundColor: '#333',
-          color: '#fff',
-          border: '1px solid #555',
-          borderRadius: '4px',
-          cursor: 'pointer',
-          fontSize: '14px',
-          fontWeight: '500',
+          width: '48px',
+          height: '48px',
+          borderRadius: '50%',
+          background: 'rgba(30, 41, 59, 0.9)',
+          backdropFilter: 'blur(40px) saturate(180%)',
+          WebkitBackdropFilter: 'blur(40px) saturate(180%)',
+          border: '1px solid rgba(255,255,255,0.2)',
           display: 'flex',
           alignItems: 'center',
-          justifyContent: 'space-between',
-          marginRight: '20px',
-          transition: 'background-color 0.3s ease',
+          justifyContent: 'center',
+          cursor: 'pointer',
+          fontSize: '22px',
+          transition: 'all 0.3s ease',
         }}
         onMouseEnter={(e) => {
-          (e.target as HTMLElement).style.backgroundColor = '#444';
+          const btn = e.currentTarget;
+          btn.style.transform = 'scale(1.08)';
+          btn.style.boxShadow = '0 8px 24px rgba(0,0,0,0.4)';
         }}
         onMouseLeave={(e) => {
-          (e.target as HTMLElement).style.backgroundColor = '#333';
+          const btn = e.currentTarget;
+          btn.style.transform = 'scale(1)';
+          btn.style.boxShadow = 'none';
         }}
       >
-        <span style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-          <span style={{ fontSize: '20px' }}>{currentLang?.flag}</span>
-          <span>{currentLang?.label}</span>
-        </span>
-        <span style={{ 
-          transition: 'transform 0.3s ease',
-          transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)'
-        }}>
-          ▼
-        </span>
+        <img src={currentLang?.img} alt={language} style={{ width: '24px', height: '24px', borderRadius: '50%', objectFit: 'contain' }} />
       </button>
 
       {isOpen && (
         <div
           style={{
             position: 'absolute',
-            width: '100px',
-            top: '100%',
-            textAlign: 'center',
-            left: 0,
-            right: 0,
-            backgroundColor: '#222',
-            border: '1px solid #555',
-            borderRadius: '4px',
-            marginTop: '5px',
-            boxShadow: '0 4px 12px rgba(0, 0, 0, 0.3)',
-            zIndex: 1000,
-            overflow: 'hidden',
+            top: '110%',
+            left: '50%',
+            transform: 'translateX(-50%)',
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '10px',
+            padding: '12px',
+            borderRadius: '20px',
+            background: 'rgba(15, 23, 42, 0.95)',
+            backdropFilter: 'blur(40px)',
+            WebkitBackdropFilter: 'blur(40px)',
+            border: '1px solid rgba(255,255,255,0.2)',
+            boxShadow: '0 20px 60px rgba(0,0,0,0.5)',
           }}
         >
           {languages.map((lang) => (
-            <button
+            <div
               key={lang.code}
               onClick={() => handleSelect(lang.code)}
               style={{
-                width: '100%',
-                padding: '12px 15px',
-                backgroundColor: language === lang.code ? '#d4af37' : '#222',
-                color: language === lang.code ? '#000' : '#fff',
-                border: 'none',
-                textAlign: 'center',
-                cursor: 'pointer',
-                fontSize: '14px',
-                fontWeight: language === lang.code ? 'bold' : 'normal',
+                width: '42px',
+                height: '42px',
+                borderRadius: '50%',
                 display: 'flex',
                 alignItems: 'center',
-                gap: '10px',
-                transition: 'background-color 0.2s ease',
+                justifyContent: 'center',
+                fontSize: '22px',
+                cursor: 'pointer',
+                background:
+                  language === lang.code
+                    ? 'rgba(251, 191, 36, 0.2)'
+                    : 'transparent',
+                transition: 'all 0.25s ease',
               }}
               onMouseEnter={(e) => {
-                if (language !== lang.code) {
-                  (e.target as HTMLElement).style.backgroundColor = '#333';
-                }
+                e.currentTarget.style.transform = 'scale(1.1)';
+                e.currentTarget.style.background =
+                  'rgba(255,255,255,0.15)';
               }}
               onMouseLeave={(e) => {
-                if (language !== lang.code) {
-                  (e.target as HTMLElement).style.backgroundColor = '#222';
-                }
+                e.currentTarget.style.transform = 'scale(1)';
+                e.currentTarget.style.background =
+                  language === lang.code
+                    ? 'rgba(251, 191, 36, 0.2)'
+                    : 'transparent';
               }}
             >
-              <span style={{ fontSize: '20px' }}>{lang.flag}</span>
-              <span>{lang.label}</span>
-            </button>
+              <img src={lang.img} alt={lang.code} style={{ width: '24px', height: '24px', borderRadius: '50%', objectFit: 'contain' }} />
+            </div>
           ))}
         </div>
       )}
     </div>
   );
+
 };
 
 export default LanguageSelector;

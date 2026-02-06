@@ -17,6 +17,7 @@ interface Translations {
   about: {
     title: string;
     subtitle: string;
+    fullName: string;
     intro: string;
     description: string;
     birthday: string;
@@ -109,6 +110,20 @@ interface Translations {
   };
 }
 
+const calculateAge = (birthdayString: string): string => {
+  const [day, month, year] = birthdayString.split('.').map(Number);
+  const birthDate = new Date(year, month - 1, day);
+  const today = new Date();
+  let age = today.getFullYear() - birthDate.getFullYear();
+  const monthDiff = today.getMonth() - birthDate.getMonth();
+  
+  if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < day)) {
+    age--;
+  }
+  
+  return age.toString();
+};
+
 const translations: Record<Language, Translations> = {
   en: {
     menu: {
@@ -125,19 +140,20 @@ const translations: Record<Language, Translations> = {
     about: {
       title: 'About Me',
       subtitle: 'Main informations about me',
-      intro: "I'm Nguyễn Quang Huy and",
+      fullName: 'Nguyen Quang Huy',
+      intro: "I'm Nguyen Quang Huy and",
       description:
-        "Hi! My name is Nguyễn Quang Huy. I am a Web Developer, and I'm very passionate and dedicated to my work. With 20 years experience as a professional Web developer, I have acquired the skills and knowledge necessary to make your project a success. I enjoy every step of the design process, from discussion and collaboration to concept and execution, but I find the most satisfaction in seeing the finished product do everything for you that it was created to do.",
-      birthday: '01.07.1990',
-      age: '28',
-      city: 'New York, USA',
-      interests: 'Soccer, UFC',
-      study: 'Chicago University',
-      degree: 'Master',
+        "Hi! My name is Nguyen Quang Huy. I am a Web Developer, and I'm very passionate and dedicated to my work. With 20 years experience as a professional Web developer, I have acquired the skills and knowledge necessary to make your project a success. I enjoy every step of the design process, from discussion and collaboration to concept and execution, but I find the most satisfaction in seeing the finished product do everything for you that it was created to do.",
+      birthday: '18.10.2005',
+      age: calculateAge('18.10.2005'),
+      city: 'Ha Noi, Vietnam',
+      interests: 'Soccer, Music',
+      study: 'Hanoi University Of Industry',
+      degree: 'Bachelor',
       website: 'www.mywebsite.com',
-      mail: 'mymail@gmail.com',
-      phone: '+77 022 177 05 05',
-      twitter: '@myusername',
+      mail: 'nquanghuycv@gmail.com',
+      phone: '0819012251',
+      twitter: '@huyberos',
       downloadCV: 'Download CV',
       sendMessage: 'Send Message',
       labels: {
@@ -194,10 +210,10 @@ const translations: Record<Language, Translations> = {
       title: 'Contact Me',
       subtitle: 'Get in touch with me',
       getInTouch: 'Get in Touch',
-      address: '123 Qwerty Avenue NYC, USA',
-      email: 'example@gmail.com',
-      phone: '+77 022 177 05 05',
-      website: 'www.yourdomain.com',
+      address: 'Nam Từ Liêm, Hà Nội, Việt Nam',
+      email: 'nquanghuycv@gmail.com',
+      phone: '0819012251',
+      website: 'www.mywebsite.com',
       yourName: 'Your Name',
       yourEmail: 'Your Email',
       yourMessage: 'Your Message',
@@ -234,19 +250,20 @@ const translations: Record<Language, Translations> = {
     about: {
       title: 'Về Tôi',
       subtitle: 'Thông tin chính về tôi',
+      fullName: 'Nguyễn Quang Huy',
       intro: 'Tôi là Nguyễn Quang Huy và',
       description:
         'Xin chào! Tên tôi là Nguyễn Quang Huy. Tôi là một Web Developer, và tôi rất đam mê và tập trung vào công việc của mình. Với 20 năm kinh nghiệm làm Web developer chuyên nghiệp, tôi đã có được kỹ năng và kiến thức cần thiết để làm cho dự án của bạn thành công. Tôi thích mỗi bước của quá trình thiết kế, từ thảo luận và hợp tác cho đến khái niệm và thực hiện, nhưng tôi thấy hài lòng nhất khi thấy sản phẩm hoàn chỉnh hoạt động đúng như được tạo ra.',
-      birthday: '01.07.1990',
-      age: '28',
-      city: 'New York, USA',
-      interests: 'Bóng đá, UFC',
-      study: 'Đại học Chicago',
-      degree: 'Thạc sĩ',
+      birthday: '18.10.2005',
+      age: calculateAge('18.10.2005'),
+      city: 'Hà Nội, Việt Nam',
+      interests: 'Bóng đá, Âm nhạc',
+      study: 'Đại học công nghiệp Hà Nội',
+      degree: 'Cử nhân',
       website: 'www.mywebsite.com',
-      mail: 'mymail@gmail.com',
-      phone: '+77 022 177 05 05',
-      twitter: '@myusername',
+      mail: 'nquanghuycv@gmail.com',
+      phone: '0819012251',
+      twitter: '@huyberos',
       downloadCV: 'Tải xuống CV',
       sendMessage: 'Gửi tin nhắn',
       labels: {
@@ -303,10 +320,10 @@ const translations: Record<Language, Translations> = {
       title: 'Liên hệ tôi',
       subtitle: 'Liên hệ với tôi',
       getInTouch: 'Liên hệ',
-      address: '123 Qwerty Avenue NYC, USA',
-      email: 'example@gmail.com',
-      phone: '+77 022 177 05 05',
-      website: 'www.yourdomain.com',
+      address: 'Nam Từ Liêm, Hà Nội, Việt Nam',
+      email: 'nquanghuycv@gmail.com',
+      phone: '0819012251',
+      website: 'www.mywebsite.com',
       yourName: 'Tên của bạn',
       yourEmail: 'Email của bạn',
       yourMessage: 'Tin nhắn của bạn',
